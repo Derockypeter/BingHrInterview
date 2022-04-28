@@ -7,7 +7,7 @@
         <title>Laravel</title>
 
         <!-- Fonts -->
-        <link href="/css/app.css" rel="stylesheet">
+        <link href="{{asset('css/app.css')}}" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
      
         <style>
@@ -22,12 +22,12 @@
     </head>
     <body class="antialiased">
         <div id="app">
-          <Home/>
+          <home-component></home-component>
         </div>
     </body>
 
     <script src="{{ asset('js/app.js') }}">
-       <script src="https://unpkg.com/flowbite@1.4.4/dist/flowbite.js"></script>
+    <script src="https://unpkg.com/flowbite@1.4.4/dist/flowbite.js"></script>
 
     </script>
 </html>
