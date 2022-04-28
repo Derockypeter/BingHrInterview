@@ -66,12 +66,28 @@ class UserController extends Controller
     public function update($id)
     {
 
+        $validator = Validator::make($request->all(), [
+            'first_name' => 'max:255',
+            'last_name' => ' max:255',
+            'username' => 'unique:users',
+            'email' => 'email|unique:users',
+            'mobile_number' => '',
+            'role' => 'max:255',
+
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json(['error' => $validator->errors()->first()], 401);
+        }
+        $user = User::find($id);
+
     }
 
     public function delete($id)
     {
         $user = User::find($id);
-
+        $id = $user->id;
+        $permission = Permission::where('user_id', $id)->delete();
         $user->delete();
         return \response(["Message" => "user deleted"]);
     }
